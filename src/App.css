@@ -1,5 +1,3 @@
-form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
+h1 {
+  color: whitesmoke;
 }

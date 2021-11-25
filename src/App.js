@@ -1,12 +1,16 @@
-/* import Forms from './components/form';
-import ListUsers from './components/listUsers'; */
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>TaskHub</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/dashboard" element={ <Dashboard /> } />
+        <Route exact path="/" element={ <Home /> } />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
