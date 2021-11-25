@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "taskhub-organization"
+  },
+  "targets": {
+    "taskhub-organization": {
+      "hosting": {
+        "main": [
+          "ontaskhub"
+        ]
+      }
+    }
+  }
+}
