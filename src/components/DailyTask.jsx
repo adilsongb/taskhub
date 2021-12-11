@@ -4,9 +4,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
 
 function DailyTask() {
-  const { date, user } = useContext(appContext);
+  const { date, user, setLoading, loading } = useContext(appContext);
   const [tasks, setTasks] = useState();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function tasksOfDay() {
@@ -18,7 +17,7 @@ function DailyTask() {
       setLoading(false);
     }
     tasksOfDay();
-  }, [date, user])
+  }, [date, user, setLoading])
 
   if (loading) {
     return <h1>Buscando tasks...</h1>
@@ -27,8 +26,8 @@ function DailyTask() {
   function renderTasks() {
     return tasks.tasksDay.map((task, i) => (
       <div key={ i }>
+        <input type="checkbox" name="" id="" />
         <h2>{ task.title }</h2>
-        <h3>{ task.describe }</h3>
       </div>
     ))
   }

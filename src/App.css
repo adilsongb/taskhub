@@ -10,3 +10,25 @@ header {
 header h1 {
   margin: 0;
 }
+
+.float-container {
+  /* background-color: rgba(24, 25, 26, 0.466); */
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.container-calendar {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-top: 80px;
+  width: 600px;
+  height: 400px;
+}
+
+.container-calendar table {
+  width: 100%;
+}

@@ -8,9 +8,11 @@ import useDate from '../hooks/useDate';
 
 function Provider({ children }) {
   const navigate = useNavigate();
-  const [modPrevDate, modNextDate] = useDate();
+  const [modPrevDate, modNextDate, getDaysInMonth] = useDate();
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
   const [date, setDate] = useState({ day: '', month: '', year: '' });
+  const [viewCalendar, setViewCal] = useState(false);
 
   useEffect(() => {
     getDateNow();
@@ -70,22 +72,29 @@ function Provider({ children }) {
     const userRef = doc(dataBase, 'users', user.uid, 'tasks', '4122021');
     const docSnap = await getDoc(userRef);
     console.log(docSnap.data());
+    console.log(`Mes ${date.month} possui ${getDaysInMonth(date.month)} dias`);
   }
 
   function prevDay() {
     const updateDate = modPrevDate(date);
     setDate(updateDate);
+    setLoading(true);
   }
 
   function nextDay() {
     const updateDate = modNextDate(date);
     setDate(updateDate);
+    setLoading(true);
   }
 
   const contextValues = {
     user,
     date,
+    loading,
+    viewCalendar,
     setUser,
+    setLoading,
+    setViewCal,
     loginForGoogle,
     signOutApp,
     setDate,

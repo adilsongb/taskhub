@@ -37,7 +37,7 @@ function useDate() {
     return { day, month, year };
   }
 
-  return [modPrevDate, modNextDate];
+  return [modPrevDate, modNextDate, getDaysInMonth];
 }
 
 export default useDate;
