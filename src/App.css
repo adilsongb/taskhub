@@ -1,34 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+main {
+  height: 100%;
+}
+
 header {
   background-color: rgb(245, 245, 245);
   box-shadow: 0 0 8px rgba(90, 90, 90, 0.322);
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 14px;
+  font-family: 'Rubik', sans-serif;
+  height: 10%;
 }
 
-header h1 {
-  margin: 0;
+header .logo-container {
+  height: 50px;
+  width: 230px;
 }
 
-.float-container {
-  /* background-color: rgba(24, 25, 26, 0.466); */
+header .header-control {
+  width: 230px;
+}
+
+.logo-header {
+  height: 50px;
+}
+
+.header-control {
+  display: flex;
+}
+
+.btn-header {
+  background-color: rgb(235, 235, 235);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgb(54, 51, 51);
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+  padding: 10px 15px;
+  padding-top: 13px;
+  transition: 0.4s background-color;
+}
+
+.btn-header:nth-child(2) {
+  margin: 0 5px;
+}
+
+.btn-header:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+header .user {
+  background-color: rgb(235, 235, 235);
+  border-radius: 10px;
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  height: 50px;
+  width: 230px;
+}
+
+.user-photo {
+  background-color: rgb(124, 124, 124);
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 6px;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.user-photo img {
+  width: 100%;
+}
+
+.user-name {
+  font-size: 14px;
+}
+
+.user-email {
+  color: rgb(85, 85, 85);
+}
+
+/* Daily tasks */
+.container-main {
   display: flex;
   justify-content: center;
-  height: 100%;
-  top: 0;
-  position: absolute;
-  width: 100%;
+  align-items: center;
+  height: 90%;
 }
 
-.container-calendar {
-  background-color: whitesmoke;
+.container-taskday {
+  background-color: rgb(245, 245, 245);
   border-radius: 10px;
-  margin-top: 80px;
-  width: 600px;
-  height: 400px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 80%;
+  width: 60%;
 }
 
-.container-calendar table {
+.task {
+  background-color: rgb(255, 255, 255);
   width: 100%;
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 2px;
+}
+
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: #2ed6a8;
+}
+
+.checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Loading animation */
+.cont-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.container-boxes {
+  background-color: whitesmoke;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 5px;
+  row-gap: 5px;
+  width: 150px;
+  height: 150px;
+}
+
+.box {
+  background-color: rgb(137, 255, 223);
+  border-radius: 5px;
+}
+
+.box1 {
+  animation-name: loading;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+}
+
+.box2 {
+  animation-name: loading;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+}
+
+.box3 {
+  animation-name: loading;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-delay: 1s;
+}
+
+.box4 {
+  animation-name: loading;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-delay: 2s;
+}
+
+@keyframes loading {
+  0%   {background-color: rgb(137, 255, 223);}
+  25%  {background-color: rgb(68, 216, 176);}
+  50%  {background-color: rgb(46, 214, 168);}
+  75%  {background-color: rgb(26, 180, 138);}
+  100% {background-color: rgb(137, 255, 223);}
 }
