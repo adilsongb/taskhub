@@ -50,7 +50,7 @@ function Header() {
       </div>
       <div className="user">
         <div className='user-photo'>
-          <img src={ photoURL } alt="profile photo" />
+          <img src={ photoURL } alt="profile user" />
         </div>
         <div>
           <span className="user-name">{displayName}</span>

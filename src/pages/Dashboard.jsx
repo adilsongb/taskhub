@@ -5,7 +5,7 @@ import DailyTask from '../components/DailyTask';
 import Loading from '../components/Loading';
 
 function Dashboard() {
-  const { user, viewCalendar } = useContext(appContext);
+  const { user } = useContext(appContext);
   
   if (!user) {
     return <div className="cont-full" style={ { height: '100%' } }><Loading /></div>;

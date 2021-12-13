@@ -33,9 +33,8 @@ function DailyTask() {
             <div key={ i } className="task">
               <label className="checkbox">
                 { task.title }
-                <input type="checkbox"/>
+                <input type="checkbox" checked={ task.status }/>
                 <span className="checkmark"></span>
-                
               </label>
             </div>
           ))
