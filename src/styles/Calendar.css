@@ -1,0 +1,131 @@
+.floatFull-container {
+  background-color: rgba(231, 231, 231, 0.6);
+  box-sizing: border-box;
+  display: flex;
+  height: 90%;
+  justify-content: center;
+  padding: 10px;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  animation-name: opacity;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.calendar {
+  background-color: white;
+  border-radius: 5px;
+  height: 400px;
+  overflow: hidden;
+  width: 450px;
+  box-shadow: 0 0.3rem 0.5rem rgba(61, 58, 58, 0.3);
+  animation-name: enterCalendar;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.month {
+  background-color: rgb(69, 211, 152);
+  color: whitesmoke;
+  display: flex;
+  height: 80px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.month h1 {
+  margin: 0;
+}
+
+.month button {
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.weekdays {
+  display: flex;
+}
+
+.weekdays div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  height: calc(320px / 7);
+  width: calc(450px / 7);
+}
+
+.days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.days div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  height: calc(320px / 7);
+  width: calc(450px / 7);
+}
+
+.days span {
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 70%;
+  transition: border-width 0.2s;
+}
+
+.days span:hover:not(.xp1, .xp2, .xp3, .today) {
+  background-color: rgb(240, 240, 240);
+}
+
+.days span:hover:not(.today) {
+  border: 3px solid rgb(184, 184, 184);
+}
+
+.days .today {
+  border: 3px solid rgb(53, 52, 52, 0.5);
+}
+
+.days .xp1 {
+  background-color: rgb(206, 255, 235);
+}
+
+.days .xp2 {
+  background-color: rgb(127, 252, 200);
+}
+
+.days .xp3 {
+  background-color: rgb(41, 238, 156);
+}
+
+.prev-date, .next-date {
+  color: rgb(146, 146, 146);
+}
+
+@keyframes enterCalendar {
+  from {
+    opacity: 0%;
+    margin-top: -10px;
+  }
+  
+  to {
+    opacity: 100%;
+    margin-top: 0;
+  }
+}
+
+@keyframes opacity {
+  from { opacity: 0% }
+  to { opacity: 100% }
+}

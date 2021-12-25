@@ -28,7 +28,7 @@ function DailyTask() {
   function renderTasks() {
     return (
       <div className="container-taskday">
-        { 
+        {
           tasks.tasksDay.map((task, i) => (
             <div key={ i } className="task">
               <label className="checkbox">

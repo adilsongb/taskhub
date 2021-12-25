@@ -25,10 +25,8 @@ function Header() {
   function showCalendar() {
     if (!viewCalendar) {
       setViewCal(true);
-      console.log('Mostrei o calendario');
     } else {
       setViewCal(false);
-      console.log('Não mostrar o calendario');
     }
   }
 

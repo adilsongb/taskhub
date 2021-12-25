@@ -76,12 +76,14 @@ function Provider({ children }) {
   }
 
   function prevDay() {
+    setViewCal(false);
     const updateDate = modPrevDate(date);
     setDate(updateDate);
     setLoading(true);
   }
 
   function nextDay() {
+    setViewCal(false);
     const updateDate = modNextDate(date);
     setDate(updateDate);
     setLoading(true);
