@@ -1,14 +1,127 @@
+import { useState, useEffect, useContext } from 'react';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import appContext from '../context/context';
 import '../styles/Calendar.css';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 
 function Calendar() {
+  const months = [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const { date, setDate, setViewCal, setLoading } = useContext(appContext);
+  const [dateMod, setDateMod] = useState(date); 
+  const [days, setDays] = useState({ prevDays: [], daysNow: [], nextDays: [] });
+  const [month, setMonth] = useState(months[dateMod.month - 1]);
+
+  function prevMonth() {
+    let updateDateMonth;
+    let updateDateYear = dateMod.year;
+
+    if (dateMod.month === 1) {
+      updateDateMonth = 12;
+      updateDateYear = dateMod.year - 1;
+    } else {
+      updateDateMonth = dateMod.month - 1;
+    }
+
+    setMonth(months[updateDateMonth - 1]);
+    setDateMod({ ...dateMod, year: updateDateYear, month: updateDateMonth });
+  }
+
+  function nextMonth() {
+    let updateDateMonth;
+    let updateDateYear = dateMod.year;
+
+    if (dateMod.month === 12) {
+      updateDateMonth = 1;
+      updateDateYear = dateMod.year + 1;
+    } else {
+      updateDateMonth = dateMod.month + 1;
+    }
+
+    setMonth(months[updateDateMonth - 1]);
+    setDateMod({ ...dateMod, year: updateDateYear, month: updateDateMonth });
+  }
+
+  function changeDate(day) {
+    setViewCal(false);
+    setLoading(true);
+    setDate({ ...dateMod, day });
+  }
+
+  function changeDatePrevMonth(day) {
+    setViewCal(false);
+    setLoading(true);
+    if (dateMod.month === 1) {
+      setDate({ year: dateMod.year - 1, month: 12, day });
+    } else {
+      setDate({ ...dateMod, month: dateMod.month - 1, day });
+    }
+  }
+
+  function changeDateNextMonth(day) {
+    setViewCal(false);
+    setLoading(true);
+    if (dateMod.month === 12) {
+      setDate({ year: dateMod.year + 1, month: 1, day });
+    } else {
+      setDate({ ...dateMod, month: dateMod.month + 1, day });
+    }
+  }
+
+  useEffect(() => {
+    function renderDays() {
+      let daysTotal = 42;
+      let arrayPrevDays = [];
+      let arrayDays = [];
+      let arrayNextDays = [];
+  
+      // Ultimo dia do mes atual:
+      const lastDay = new Date(dateMod.year, dateMod.month, 0).getDate();
+  
+      // Ultimo dia do mes anterior:
+      const prevLastDay = new Date(dateMod.year, dateMod.month - 1, 0).getDate();
+  
+      // Dia da semana do primeiro dia do mes:
+      const firstDayIndex = new Date(dateMod.year, dateMod.month - 1, 1).getDay();
+  
+      // Dia da semana do ultimo dia do mes:
+      const lastDayIndex = new Date(dateMod.year, dateMod.month, 0).getDay();
+  
+      const nextDays = 7 - lastDayIndex - 1;
+  
+      for (let x = firstDayIndex; x > 0; x--) {
+        arrayPrevDays.push(prevLastDay - x + 1);
+        daysTotal -= 1;
+      }
+  
+      for (let i = 1; i <= lastDay; i++) {
+        arrayDays.push(i);
+        daysTotal -= 1;
+      }
+  
+      for (let j = 1; j <= nextDays; j++) {
+        arrayNextDays.push(j);
+        daysTotal -= 1;
+      }
+  
+      for (let c = 1; c <= daysTotal; c++) {
+        arrayNextDays.push(nextDays + c);
+      }
+  
+      setDays({
+        daysNow: arrayDays,
+        prevDays: arrayPrevDays,
+        nextDays: arrayNextDays
+      });
+    }
+    renderDays();
+  }, [dateMod])
+
   return (
     <div className="floatFull-container">
       <div className="calendar">
         <div className="month">
-            <button><FaAngleLeft /></button>
-            <h1>Dezembro</h1>
-            <button><FaAngleRight /></button>
+            <button onClick={ prevMonth }><FaAngleLeft /></button>
+            <h1>{ month }</h1>
+            <button onClick={ nextMonth }><FaAngleRight /></button>
         </div>
         <div className="weekdays">
           <div>Dom</div>
@@ -20,48 +133,38 @@ function Calendar() {
           <div>Sáb</div>
         </div>
         <div className="days">
-          <div className="prev-date"><span>28</span></div>
-          <div className="prev-date"><span>29</span></div>
-          <div className="prev-date"><span>30</span></div>
-          <div><span>1</span></div>
-          <div><span>2</span></div>
-          <div><span>3</span></div>
-          <div><span>4</span></div>
-          <div><span>5</span></div>
-          <div><span>6</span></div>
-          <div><span>7</span></div>
-          <div><span>8</span></div>
-          <div><span>9</span></div>
-          <div><span>10</span></div>
-          <div><span>11</span></div>
-          <div><span>12</span></div>
-          <div><span className="xp2">13</span></div>
-          <div><span className="xp3">14</span></div>
-          <div><span className="xp1">15</span></div>
-          <div><span>16</span></div>
-          <div><span>17</span></div>
-          <div><span>18</span></div>
-          <div><span className="xp1">19</span></div>
-          <div><span className="xp2">20</span></div>
-          <div><span>21</span></div>
-          <div><span>22</span></div>
-          <div><span>23</span></div>
-          <div><span className="today">24</span></div>
-          <div><span>25</span></div>
-          <div><span>26</span></div>
-          <div><span>27</span></div>
-          <div><span>28</span></div>
-          <div><span>29</span></div>
-          <div><span>30</span></div>
-          <div><span>31</span></div>
-          <div className="next-date"><span>1</span></div>
-          <div className="next-date"><span>2</span></div>
-          <div className="next-date"><span>3</span></div>
-          <div className="next-date"><span>4</span></div>
-          <div className="next-date"><span>5</span></div>
-          <div className="next-date"><span>6</span></div>
-          <div className="next-date"><span>7</span></div>
-          <div className="next-date"><span>8</span></div>
+          { days.prevDays.map((day, i) => {
+              return (
+                <div className="prev-date" key={ i }>
+                  <span onClick={ () => changeDatePrevMonth(day)}>{ day }</span>
+                </div>
+              )
+            }) }
+
+          { days.daysNow.map((day, i) => {
+              if (day === new Date().getDate() && (dateMod.month - 1) === new Date().getMonth() && dateMod.year === new Date().getFullYear()) {
+                return ( 
+                  <div key={ i }>
+                    <span className="today" onClick={ () => changeDate(day)}>
+                      { day }
+                    </span>
+                  </div>
+                );
+              }
+              return (
+                <div key={ i }>
+                  <span onClick={ () => changeDate(day) }>{ day }</span>
+                </div>
+              )
+            }) }
+
+          { days.nextDays.map((day, i) => {
+              return (
+                <div className="next-date" key={ i }>
+                  <span onClick={ () => changeDateNextMonth(day)}>{ day }</span>
+                </div>
+              )
+            }) }
         </div>
       </div>
     </div>

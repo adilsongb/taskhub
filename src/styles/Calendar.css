@@ -27,7 +27,7 @@
 
 .month {
   background-color: rgb(69, 211, 152);
-  color: whitesmoke;
+  color: white;
   display: flex;
   height: 80px;
   justify-content: space-around;
