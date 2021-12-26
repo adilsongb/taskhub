@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAe9W6S76vYnrKjR5sZ1KyPQFkEbRGCAuE",
@@ -14,3 +15,4 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig);
 export const dataBase = getFirestore();
 export const providerGoogle = new GoogleAuthProvider();
+const analytics = getAnalytics(firebaseApp);
