@@ -4,7 +4,6 @@ import { doc, getDoc } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
 import Loading from './Loading';
 import NewTask from './NewTask';
-// import ilustrationChecklist from '../images/undraw_Checklist.png';
 import ilustrationTasks from '../images/tasks.png';
 import ilustrationCalendar from '../images/date_picker.png';
 import '../styles/Dashboard.css';
@@ -23,11 +22,7 @@ function DailyTask() {
       setLoading(false);
     }
     tasksOfDay();
-  }, [date, user, setLoading])
-
-  if (loading) {
-    return <div className="cont-full"><Loading /></div>;
-  }
+  }, [date, user, loading, setLoading])
 
   function viewContainer() {
     if (viewFormTask) {
@@ -45,8 +40,8 @@ function DailyTask() {
       return (
         <section className="status-controler">
           <div className="status-progress">
-            <svg viewBox="0 0 36 36" class="circular-chart orange">
-              <path class="circle-bg"
+            <svg viewBox="0 0 36 36" className="circular-chart orange">
+              <path className="circle-bg"
                 d="M18 2.0845
                   a 15.9155 15.9155 0 0 1 0 31.831
                   a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -54,7 +49,12 @@ function DailyTask() {
             </svg>
             <h2>{ `${dayStatus.completedTasks} / ${dayStatus.totalTasks}` }</h2>
           </div>
-          <button className="btn-new-task">Nova task</button>
+          <button
+            className="btn-new-task"
+            onClick={ viewContainer }
+          >
+            Nova task
+          </button>
         </section>
       )
     }
@@ -62,13 +62,13 @@ function DailyTask() {
     return (
       <section className="status-controler">
         <div className="status-progress">
-          <svg viewBox="0 0 36 36" class="circular-chart orange">
-            <path class="circle-bg"
+          <svg viewBox="0 0 36 36" className="circular-chart orange">
+            <path className="circle-bg"
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
             />
-            <path class="circle"
+            <path className="circle"
               stroke-dasharray={ `${percentComp * dayStatus.completedTasks}, 100` }
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
@@ -77,7 +77,12 @@ function DailyTask() {
           </svg>
           <h2>{ `${dayStatus.completedTasks} / ${dayStatus.totalTasks}` }</h2>
         </div>
-        <button className="btn-new-task">Nova task</button>
+        <button
+          className="btn-new-task"
+          onClick={ viewContainer }
+        >
+          Nova task
+        </button>
       </section>
     )
   }
@@ -138,10 +143,14 @@ function DailyTask() {
     )
   }
 
+  if (loading) {
+    return <div className="cont-full"><Loading /></div>;
+  }
+
   return (
     <section className="container-main">
       { tasks ? renderTasks() : renderNoTasks() }
-      { viewFormTask ? <NewTask cancelForm={ viewContainer } /> : '' }
+      { viewFormTask ? <NewTask closeForm={ viewContainer } /> : '' }
     </section>
   )
 }
