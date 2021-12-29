@@ -174,3 +174,22 @@
   margin-top: 10px;
   width: 60%;
 }
+
+.noTasks {
+  text-align: center;
+  color: #1da581;
+}
+
+.noTasks > h1 {
+  font-size: 30px;
+}
+
+.noTasks > button {
+  background-color: #1da581;
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+  cursor: pointer;
+  font-family: 'Rubik', sans-serif;
+  padding: 10px;
+}

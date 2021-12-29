@@ -1,0 +1,67 @@
+.full-container {
+  background-color: rgba(216, 216, 216, 0.733);
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  animation-name: opacity;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.form-newtask {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0.3rem 0.5rem rgba(61, 58, 58, 0.212);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.form-newtask > h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.form-newtask > input, .form-newtask > textarea {
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-newtask > textarea {
+  resize: none;
+}
+
+.form-newtask > input:focus, .form-newtask > textarea:focus {
+  outline-color: rgb(221, 221, 221);
+}
+
+.form-newtask > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-newtask > div > button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.btn-add {
+  background-color: #64eb98;
+}
+
+@keyframes opacity {
+  from { opacity: 0% }
+  to { opacity: 100% }
+}

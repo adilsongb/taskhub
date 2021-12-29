@@ -13,6 +13,7 @@ function Provider({ children }) {
   const [loading, setLoading] = useState(true);
   const [date, setDate] = useState({ day: '', month: '', year: '' });
   const [viewCalendar, setViewCal] = useState(false);
+  const [viewFormTask, setViewFormTask] = useState(false);
 
   useEffect(() => {
     getDateNow();
@@ -94,9 +95,11 @@ function Provider({ children }) {
     date,
     loading,
     viewCalendar,
+    viewFormTask,
     setUser,
     setLoading,
     setViewCal,
+    setViewFormTask,
     loginForGoogle,
     signOutApp,
     setDate,

@@ -3,11 +3,14 @@ import appContext from '../context/context';
 import { doc, getDoc } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
 import Loading from './Loading';
-import ilustrationChecklist from '../images/undraw_Checklist.png';
+import NewTask from './NewTask';
+// import ilustrationChecklist from '../images/undraw_Checklist.png';
+import ilustrationTasks from '../images/tasks.png';
+import ilustrationCalendar from '../images/date_picker.png';
 import '../styles/Dashboard.css';
 
 function DailyTask() {
-  const { date, user, setLoading, loading } = useContext(appContext);
+  const { date, user, setLoading, loading, setViewFormTask, viewFormTask } = useContext(appContext);
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
@@ -26,26 +29,12 @@ function DailyTask() {
     return <div className="cont-full"><Loading /></div>;
   }
 
-  function renderTasks() {
-    return (
-      <section className="container-tasksday">
-        {
-          tasks.tasksDay.map((task, i) => (
-            <div key={ i } className="task">
-              <label className="checkbox">
-                <input type="checkbox" defaultChecked={ task.status } />
-                <span className="checkmark"></span>
-              </label>
-              <span className="title-task">{ task.title }</span>
-            </div>
-          ))
-        }
-      </section>
-    )
-  }
-
-  function renderNoTasks() {
-    return <img src={ ilustrationChecklist } alt="" width={'500px'} />
+  function viewContainer() {
+    if (viewFormTask) {
+      setViewFormTask(false);
+    } else {
+      setViewFormTask(true);
+    }
   }
 
   function renderControl() {
@@ -93,13 +82,66 @@ function DailyTask() {
     )
   }
 
+  function renderTasks() {
+    return (
+      <>
+        <section className="container-tasksday">
+          {
+            tasks.tasksDay.map((task, i) => (
+              <div key={ i } className="task">
+                <label className="checkbox">
+                  <input type="checkbox" defaultChecked={ task.status } />
+                  <span className="checkmark"></span>
+                </label>
+                <span className="title-task">{ task.title }</span>
+              </div>
+            ))
+          }
+        </section>
+        <aside>
+          { tasks ? renderControl() : '' }
+          <section className="announcement">
+          </section>
+        </aside>
+      </>
+    )
+  }
+
+  function renderNoTasks() {
+    const dateNow = new Date();
+
+    if (date.year > dateNow.getFullYear()) {
+      return (
+        <div className="noTasks">
+          <img src={ ilustrationTasks } alt="" width={'350px'} />
+          <h1>Planeje este dia!</h1>
+          <button onClick={ viewContainer }>Adicionar Task</button>
+        </div>
+      )
+    }
+
+    if (date.year === dateNow.getFullYear() && (date.day >= dateNow.getDate() && date.month >= dateNow.getMonth() + 1)) {
+      return (
+        <div className="noTasks">
+          <img src={ ilustrationTasks } alt="" width={'350px'} />
+          <h1>Planeje este dia!</h1>
+          <button onClick={ viewContainer }>Adicionar Task</button>
+        </div>
+      )
+    }
+
+    return (
+      <div className="noTasks">
+        <img src={ ilustrationCalendar } alt="" width={'350px'} />
+        <h1>Nenhuma Task foi feita nesse dia</h1>
+      </div>
+    )
+  }
+
   return (
     <section className="container-main">
       { tasks ? renderTasks() : renderNoTasks() }
-      <aside>
-        { tasks ? renderControl() : '' }
-        <section className="announcement"></section>
-      </aside>
+      { viewFormTask ? <NewTask cancelForm={ viewContainer } /> : '' }
     </section>
   )
 }
