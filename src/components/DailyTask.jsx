@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import appContext from '../context/context';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
 import Loading from './Loading';
 import NewTask from './NewTask';
@@ -36,40 +36,18 @@ function DailyTask() {
     const { dayStatus } = tasks;
     const percentComp = 100 / dayStatus.totalTasks;
 
-    if (dayStatus.completedTasks === 0) {
-      return (
-        <section className="status-controler">
-          <div className="status-progress">
-            <svg viewBox="0 0 36 36" className="circular-chart orange">
-              <path className="circle-bg"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-            </svg>
-            <h2>{ `${dayStatus.completedTasks} / ${dayStatus.totalTasks}` }</h2>
-          </div>
-          <button
-            className="btn-new-task"
-            onClick={ viewContainer }
-          >
-            Nova task
-          </button>
-        </section>
-      )
-    }
-
     return (
       <section className="status-controler">
         <div className="status-progress">
-          <svg viewBox="0 0 36 36" className="circular-chart orange">
+          <svg viewBox="0 0 36 36" className="circular-chart">
             <path className="circle-bg"
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
             />
             <path className="circle"
-              stroke-dasharray={ `${percentComp * dayStatus.completedTasks}, 100` }
+              strokeDasharray={ `${percentComp * dayStatus.completedTasks}, 100` }
+              visibility={ dayStatus.completedTasks === 0 ? 'hidden' : '' }
               d="M18 2.0845
                 a 15.9155 15.9155 0 0 1 0 31.831
                 a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -87,6 +65,22 @@ function DailyTask() {
     )
   }
 
+  async function checkTask({ target }, index) {
+    target.disabled = true;
+    const codDate = `${date.day}${date.month}${date.year}`;
+    const docRef = doc(dataBase, 'users', user.uid, 'tasks', codDate);
+    const count = (target.checked ? tasks.dayStatus.completedTasks + 1 : tasks.dayStatus.completedTasks - 1);
+    const updateTask = tasks.tasksDay[index];
+    updateTask.status = target.checked;
+    await updateDoc(docRef, {
+      "dayStatus.completedTasks": count,
+      "tasksDay": tasks.tasksDay
+    });
+    const docSnap = await getDoc(docRef);
+    setTasks(docSnap.data());
+    target.disabled = false;
+  }
+
   function renderTasks() {
     return (
       <>
@@ -95,7 +89,11 @@ function DailyTask() {
             tasks.tasksDay.map((task, i) => (
               <div key={ i } className="task">
                 <label className="checkbox">
-                  <input type="checkbox" defaultChecked={ task.status } />
+                  <input
+                    type="checkbox"
+                    defaultChecked={ task.status }
+                    onChange={ (e) => checkTask(e, i) }
+                  />
                   <span className="checkmark"></span>
                 </label>
                 <span className="title-task">{ task.title }</span>

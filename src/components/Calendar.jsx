@@ -145,7 +145,7 @@ function Calendar() {
               if (day === new Date().getDate() && (dateMod.month - 1) === new Date().getMonth() && dateMod.year === new Date().getFullYear()) {
                 return ( 
                   <div key={ i }>
-                    <span className="today" onClick={ () => changeDate(day)}>
+                    <span className="today xp3" onClick={ () => changeDate(day)}>
                       { day }
                     </span>
                   </div>

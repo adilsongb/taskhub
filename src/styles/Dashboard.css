@@ -157,9 +157,10 @@
   fill: none;
   stroke-width: 2.8;
   stroke-linecap: round;
+  transition: 1s;
 }
 
-.circular-chart.orange .circle {
+.circular-chart .circle {
   stroke: #2ed6a8;
 }
 
@@ -192,4 +193,10 @@
   cursor: pointer;
   font-family: 'Rubik', sans-serif;
   padding: 10px;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
 }
