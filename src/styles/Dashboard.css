@@ -43,7 +43,7 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  margin-top: 22px;
+  margin-top: 20px;
   padding: 0 20px;
   width: 90%;
   height: 60px;
@@ -104,11 +104,6 @@
 }
 
 .container-main > aside {
-  /* background-color: rgb(190, 190, 190); */
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
   width: 300px;
   height: 80%;
 }
@@ -116,6 +111,7 @@
 .announcement {
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
+  margin: 0 auto;
   width: 80%;
   height: 250px;
 }
@@ -123,9 +119,13 @@
 .status-controler {
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 80%;
   height: 200px;
-  text-align: center;
+  margin: 20px auto;
 }
 
 .status-progress {
@@ -133,7 +133,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 12px 0;
+}
+
+.status-progress-full {
+  height: 100%;
 }
 
 .status-progress h2 {

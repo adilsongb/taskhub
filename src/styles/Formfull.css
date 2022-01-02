@@ -20,6 +20,20 @@
   border-radius: 5px;
   box-sizing: border-box;
   padding: 10px;
+  width: 500px;
+  min-height: 350px;
+}
+
+.loading-submit {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0.3rem 0.5rem rgba(61, 58, 58, 0.212);
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 350px;
 }
 
 .form-newtask > h2 {

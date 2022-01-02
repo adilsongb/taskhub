@@ -11,6 +11,8 @@ import '../styles/Dashboard.css';
 function DailyTask() {
   const { date, user, setLoading, loading, setViewFormTask, viewFormTask } = useContext(appContext);
   const [tasks, setTasks] = useState();
+  const [pastDate, setPastDate] = useState(true);
+  const dateNow = new Date();
 
   useEffect(() => {
     async function tasksOfDay() {
@@ -24,6 +26,26 @@ function DailyTask() {
     tasksOfDay();
   }, [date, user, loading, setLoading])
 
+  useEffect(() => {
+    const monthNow = dateNow.getMonth() + 1;
+
+    if (date.year > dateNow.getFullYear()) {
+      setPastDate(false);
+    } else if (date.year === dateNow.getFullYear() && date.month > monthNow) {
+      setPastDate(false);
+    } else if (date.year === dateNow.getFullYear() && date.month === monthNow) {
+      if (date.day > dateNow.getDate()) {
+        setPastDate(false);
+      } else if (date.day === dateNow.getDate()) {
+        setPastDate(false);
+      } else {
+        setPastDate(true);
+      }
+    } else {
+      setPastDate(true);
+    }
+  }, [date]) // eslint-disable-line react-hooks/exhaustive-deps
+
   function viewContainer() {
     if (viewFormTask) {
       setViewFormTask(false);
@@ -35,6 +57,30 @@ function DailyTask() {
   function renderControl() {
     const { dayStatus } = tasks;
     const percentComp = 100 / dayStatus.totalTasks;
+
+    if (pastDate) {
+      return (
+        <section className="status-controler">
+          <div className="status-progress status-progress-full">
+            <svg viewBox="0 0 36 36" className="circular-chart">
+              <path className="circle-bg"
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path className="circle"
+                strokeDasharray={ `${percentComp * dayStatus.completedTasks}, 100` }
+                visibility={ dayStatus.completedTasks === 0 ? 'hidden' : '' }
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+            </svg>
+            <h2>{ `${dayStatus.completedTasks} / ${dayStatus.totalTasks}` }</h2>
+          </div>
+        </section>
+      );
+    }
 
     return (
       <section className="status-controler">
@@ -93,6 +139,7 @@ function DailyTask() {
                     type="checkbox"
                     defaultChecked={ task.status }
                     onChange={ (e) => checkTask(e, i) }
+                    disabled={ pastDate }
                   />
                   <span className="checkmark"></span>
                 </label>
@@ -102,28 +149,16 @@ function DailyTask() {
           }
         </section>
         <aside>
-          { tasks ? renderControl() : '' }
-          <section className="announcement">
-          </section>
+          { renderControl() }
+          {/* <section className="announcement">
+          </section> */}
         </aside>
       </>
     )
   }
 
   function renderNoTasks() {
-    const dateNow = new Date();
-
-    if (date.year > dateNow.getFullYear()) {
-      return (
-        <div className="noTasks">
-          <img src={ ilustrationTasks } alt="" width={'350px'} />
-          <h1>Planeje este dia!</h1>
-          <button onClick={ viewContainer }>Adicionar Task</button>
-        </div>
-      )
-    }
-
-    if (date.year === dateNow.getFullYear() && (date.day >= dateNow.getDate() && date.month >= dateNow.getMonth() + 1)) {
+    if (!pastDate) {
       return (
         <div className="noTasks">
           <img src={ ilustrationTasks } alt="" width={'350px'} />

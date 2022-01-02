@@ -2,10 +2,12 @@ import { useContext, useState } from 'react';
 import appContext from '../context/context';
 import { doc, setDoc, getDoc, updateDoc, arrayUnion, increment } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
+import Loading from './Loading';
 import '../styles/Formfull.css';
 
 function NewTask({ closeForm }) {
   const [task, setTask] = useState({ title: '', describe: '', status: false });
+  const [submitTask, setSubmitTask] = useState(false);
   const { user, date, setLoading } = useContext(appContext);
 
   function handleChange({ target }) {
@@ -16,6 +18,7 @@ function NewTask({ closeForm }) {
   }
 
   async function submitNewTask(event) {
+    setSubmitTask(true);
     event.preventDefault();
     console.log(task);
     const codDate = `${date.day}${date.month}${date.year}`;
@@ -29,23 +32,41 @@ function NewTask({ closeForm }) {
         "tasksDay": arrayUnion(task)
       })
         .then(() => {
+          setSubmitTask(false);
           console.log('Task adicionada com sucesso!');
           closeForm();
           setLoading(true);
         })
-        .catch((erro) => console.log(erro));
+        .catch((erro) => {
+          setSubmitTask(false);
+          console.log(erro);
+        });
     } else {
       setDoc(docRef, {
         dayStatus: { completedTasks: 0, totalTasks: 1 },
         tasksDay: [ task ]
       })
         .then(() => {
+          setSubmitTask(false);
           console.log('Task adicionada com sucesso!');
           closeForm();
           setLoading(true);
         })
-        .catch((erro) => console.log(erro));
+        .catch((erro) => {
+          setSubmitTask(false);
+          console.log(erro);
+        });
     }
+  }
+
+  if (submitTask) {
+    return (
+      <div className="full-container">
+        <div className="loading-submit">
+          <Loading />
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -57,6 +78,7 @@ function NewTask({ closeForm }) {
           placeholder="Título"
           name="title"
           onChange={ handleChange }
+          autocomplete='off'
         />
         <textarea
           placeholder="Detalhes"
