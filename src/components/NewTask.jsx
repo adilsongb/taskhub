@@ -78,7 +78,7 @@ function NewTask({ closeForm }) {
           placeholder="Título"
           name="title"
           onChange={ handleChange }
-          autocomplete='off'
+          autoComplete='off'
         />
         <textarea
           placeholder="Detalhes"

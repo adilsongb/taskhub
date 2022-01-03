@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import appContext from '../context/context';
 import '../styles/Calendar.css';
+import DayCalendar from './DayCalendar';
 
 function Calendar() {
   const months = [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -141,22 +142,7 @@ function Calendar() {
               )
             }) }
 
-          { days.daysNow.map((day, i) => {
-              if (day === new Date().getDate() && (dateMod.month - 1) === new Date().getMonth() && dateMod.year === new Date().getFullYear()) {
-                return ( 
-                  <div key={ i }>
-                    <span className="today" onClick={ () => changeDate(day)}>
-                      { day }
-                    </span>
-                  </div>
-                );
-              }
-              return (
-                <div key={ i }>
-                  <span onClick={ () => changeDate(day) }>{ day }</span>
-                </div>
-              )
-            }) }
+          { days.daysNow.map((day, i) => <DayCalendar key={ i } day={ day } dateMod={ dateMod } changeDate={ changeDate } />) }
 
           { days.nextDays.map((day, i) => {
               return (

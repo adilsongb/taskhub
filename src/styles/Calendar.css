@@ -105,6 +105,7 @@
 
 .days .xp2 {
   background-color: rgb(127, 252, 200);
+  transition: 0.6s background-color, 0.2s border-width;
 }
 
 .days .xp3 {
