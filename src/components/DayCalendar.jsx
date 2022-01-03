@@ -1,13 +1,13 @@
-import { useEffect, useState, useContext } from 'react/cjs/react.development';
+/* import { useEffect, useState, useContext } from 'react/cjs/react.development';
 import { doc, getDoc } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
-import appContext from '../context/context';
+import appContext from '../context/context'; */
 
 function DayCalendar({ day, dateMod, changeDate }) {
-  const [styleDay, setStyleDay] = useState('');
-  const { user } = useContext(appContext);
+  // const [styleDay, setStyleDay] = useState('');
+  // const { user } = useContext(appContext);
 
-  useEffect(() => {
+  /* useEffect(() => {
     async function checkDay() {
       setStyleDay('');
       const codDate = `${day}${dateMod.month}${dateMod.year}`;
@@ -20,12 +20,12 @@ function DayCalendar({ day, dateMod, changeDate }) {
     }
   
     checkDay();
-  }, [dateMod]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [dateMod])  */// eslint-disable-line react-hooks/exhaustive-deps
 
   if (day === new Date().getDate() && (dateMod.month - 1) === new Date().getMonth() && dateMod.year === new Date().getFullYear()) {
     return ( 
       <div>
-        <span className={ `today ${ styleDay }` } id={ day } onClick={ () => changeDate(day)}>
+        <span className="today" id={ day } onClick={ () => changeDate(day)}>
           { day }
         </span>
       </div>
@@ -34,7 +34,7 @@ function DayCalendar({ day, dateMod, changeDate }) {
 
   return (
     <div>
-      <span className={ styleDay } id={ day } onClick={ () => changeDate(day) }>{ day }</span>
+      <span id={ day } onClick={ () => changeDate(day) }>{ day }</span>
     </div>
   )
 }
