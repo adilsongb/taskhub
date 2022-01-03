@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import appContext from '../context/context';
 import extendLogo from '../images/ext-logo-comp.png';
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
+import '../styles/Header.css';
 
 function Header() {
   const {
@@ -30,6 +31,18 @@ function Header() {
     }
   }
 
+  function viewOptions() {
+    const divPanel = document.getElementById('float-panel');
+
+    if (!divPanel.style.height) {
+      divPanel.style.height = '158px';
+    } else if (divPanel.style.height === '158px'){
+      divPanel.style.height = '50px';
+    } else {
+      divPanel.style.height = '158px';
+    }
+  }
+
   return (
     <header>
       <div className='logo-container'>
@@ -46,15 +59,21 @@ function Header() {
           <BsCaretRightFill />
         </button>
       </div>
-      <div className="user">
-        <div className='user-photo'>
-          <img src={ photoURL } alt="profile user" />
-        </div>
-        <div>
-          <span className="user-name">{displayName}</span>
-          <br />
-          <span className="user-email">{email}</span>
-          <button onClick={signOutApp} style={ { display: 'none' } }>Sair</button>
+      <div className="base-cont-user">
+        <div className="float-panel" id="float-panel">
+          <div className="user" onClick={ viewOptions }>
+            <div className='user-photo'>
+              <img src={ photoURL } alt="profile user" />
+            </div>
+            <div>
+              <span className="user-name">{displayName}</span>
+              <br />
+              <span className="user-email">{email}</span>
+            </div>
+          </div>
+          <button className="btn-menu-user" disabled="disabled">Estatísticas</button>
+          <button className="btn-menu-user" disabled="disabled">Configurações</button>
+          <button className="btn-menu-user" onClick={ signOutApp } >Sair</button>
         </div>
       </div>
     </header>

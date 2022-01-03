@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+header {
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0 0 8px rgba(90, 90, 90, 0.322);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  font-family: 'Rubik', sans-serif;
+  height: 10%;
+}
+
+header .logo-container {
+  height: 50px;
+  width: 230px;
+}
+
+header .header-control {
+  width: 230px;
+}
+
+.logo-header {
+  height: 50px;
+}
+
+.header-control {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-header {
+  background-color: rgb(235, 235, 235);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgb(54, 51, 51);
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+  padding: 10px 15px;
+  padding-top: 13px;
+  transition: 0.4s background-color;
+}
+
+.btn-header:nth-child(2) {
+  margin: 0 5px;
+  font-size: 16px;
+  width: 129px;
+}
+
+.btn-header:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+header .base-cont-user {
+  background-color: rgb(235, 235, 235);
+  border-radius: 10px;
+  height: 50px;
+  width: 230px;
+}
+
+header .float-panel {
+  background-color: rgb(235, 235, 235);
+  border-radius: 10px;
+  box-sizing: border-box;
+  height: 50px;
+  overflow: hidden;
+  transition: 0.2s;
+  width: 100%;
+}
+
+header .float-panel:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+header .user {
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  padding-left: 5px;
+  height: 50px;
+  width: 100%;
+}
+
+.user-photo {
+  background-color: rgb(124, 124, 124);
+  border-radius: 10px;
+  margin-right: 6px;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.user-photo img {
+  width: 100%;
+}
+
+.user-name {
+  font-size: 14px;
+}
+
+.user-email {
+  color: rgb(85, 85, 85);
+}
+
+.btn-menu-user {
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  font-weight: 400;
+  font-family: 'Rubik', sans-serif;
+  text-align: left;
+  width: 100%;
+}
+
+.btn-menu-user:disabled {
+  cursor: default;
+  text-decoration: line-through;
+}
