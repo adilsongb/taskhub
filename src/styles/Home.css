@@ -1,0 +1,12 @@
+header.header-home {
+  padding: 25px 50px;
+}
+
+header.header-home > img {
+  width: 250px;
+}
+
+main {
+  height: 100%;
+  min-height: 100%;
+}

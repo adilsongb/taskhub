@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
 
-header {
+header.header-dashboard {
   background-color: rgb(245, 245, 245);
-  box-shadow: 0 0 8px rgba(90, 90, 90, 0.322);
+  /* box-shadow: 0 0 8px rgba(90, 90, 90, 0.322); */
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 14px;
   font-family: 'Rubik', sans-serif;
-  height: 10%;
+  height: 9%;
 }
 
-header .logo-container {
+header.header-dashboard .logo-container {
   height: 50px;
   width: 230px;
 }
 
-header .header-control {
+header.header-dashboard .header-control {
   width: 230px;
 }
 
@@ -54,14 +54,14 @@ header .header-control {
   background-color: rgb(221, 221, 221);
 }
 
-header .base-cont-user {
+header.header-dashboard .base-cont-user {
   background-color: rgb(235, 235, 235);
   border-radius: 10px;
   height: 50px;
   width: 230px;
 }
 
-header .float-panel {
+header.header-dashboard .float-panel {
   background-color: rgb(235, 235, 235);
   border-radius: 10px;
   box-sizing: border-box;
@@ -71,11 +71,11 @@ header .float-panel {
   width: 100%;
 }
 
-header .float-panel:hover {
+header.header-dashboard .float-panel:hover {
   background-color: rgb(230, 230, 230);
 }
 
-header .user {
+header.header-dashboard .user {
   align-items: center;
   box-sizing: border-box;
   cursor: pointer;

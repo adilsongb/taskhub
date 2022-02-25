@@ -44,7 +44,7 @@ function Header() {
   }
 
   return (
-    <header>
+    <header className="header-dashboard">
       <div className='logo-container'>
         <img src={ extendLogo } className="logo-header" alt="logo" />
       </div>

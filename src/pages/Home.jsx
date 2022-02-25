@@ -1,6 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import appContext from '../context/context';
+import logo from '../images/ext-logo-comp.png';
+import '../styles/Home.css';
 
 function Home() {
   const navigate = useNavigate();
@@ -13,10 +15,14 @@ function Home() {
   }, [user, navigate])
 
   return (
-    <main>
-      <h1>Home</h1>
-      <button onClick={ loginForGoogle }>Login com o Google</button>
-    </main>
+    <>
+      <header className="header-home">
+        <img src={ logo } alt="Logo TaskHub" />
+      </header>
+      <main>
+        <button onClick={ loginForGoogle }>Login com o Google</button>
+      </main>
+    </>
   );
 }
 

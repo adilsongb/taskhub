@@ -3,15 +3,14 @@
 .container-main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 90%;
+  height: 91%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-top: 50px;
 }
 
 .container-main > section {
-  /* background-color: rgb(228, 228, 228); */
   width: 600px;
-  height: 80%;
-  overflow-y: scroll;
 }
 
 .container-main > section::-webkit-scrollbar {
@@ -47,6 +46,10 @@
   padding: 0 20px;
   width: 90%;
   height: 60px;
+}
+
+.task:last-child {
+  margin-bottom: 100px;
 }
 
 .checkbox {
@@ -180,8 +183,13 @@
 }
 
 .noTasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: #1da581;
+  width: 500px;
 }
 
 .noTasks > h1 {
