@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import appContext from '../context/context';
 import extendLogo from '../images/ext-logo-comp.png';
+import LogoMobile from '../images/logo-mobile.png';
 import { BsCaretLeftFill, BsCaretRightFill } from "react-icons/bs";
 import '../styles/Header.css';
 
@@ -47,6 +48,7 @@ function Header() {
     <header className="header-dashboard">
       <div className='logo-container'>
         <img src={ extendLogo } className="logo-header" alt="logo" />
+        <img src={ LogoMobile } className="logo-header-mobile" alt="logo" />
       </div>
       <div className="header-control">
         <button onClick={prevDay} className="btn-header arrow">
@@ -75,6 +77,9 @@ function Header() {
           <button className="btn-menu-user" disabled="disabled">Configurações</button>
           <button className="btn-menu-user" onClick={ signOutApp } >Sair</button>
         </div>
+      </div>
+      <div className="user-mobile">
+        <img src={ photoURL } alt="profile user" />
       </div>
     </header>
   )
