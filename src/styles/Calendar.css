@@ -9,7 +9,7 @@
   position: absolute;
   top: 9%;
   width: 100%;
-  animation-name: opacity;
+  animation-name: opacityBackground;
   animation-duration: 0.3s;
   animation-iteration-count: 1;
 }
@@ -118,17 +118,17 @@
 
 @keyframes enterCalendar {
   from {
-    opacity: 0%;
+    opacity: 0;
     margin-top: -10px;
   }
   
   to {
-    opacity: 100%;
+    opacity: 1.0;
     margin-top: 0;
   }
 }
 
-@keyframes opacity {
-  from { opacity: 0% }
-  to { opacity: 100% }
+@keyframes opacityBackground {
+  from { opacity: 0 }
+  to { opacity: 1.0 }
 }

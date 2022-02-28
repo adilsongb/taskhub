@@ -47,6 +47,8 @@
   border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
   padding: 10px;
   width: 100%;
 }
@@ -56,7 +58,9 @@
 }
 
 .form-newtask > input:focus, .form-newtask > textarea:focus {
-  outline-color: rgb(221, 221, 221);
+  outline-style: solid;
+  outline-color: rgb(46, 214, 169);
+  outline-width: 2px;
 }
 
 .form-newtask > div {
@@ -68,14 +72,17 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 600;
   padding: 10px;
 }
 
 .btn-add {
-  background-color: #64eb98;
+  background-color: rgb(46, 214, 169);
+  color: white;
+  font-weight: 600;
 }
 
 @keyframes opacity {
-  from { opacity: 0% }
-  to { opacity: 100% }
+  from { opacity: 0 }
+  to { opacity: 1.0 }
 }

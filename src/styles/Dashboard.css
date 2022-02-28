@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+main {
+  height: 100%;
+}
 
 .container-main {
   display: flex;
@@ -6,33 +8,12 @@
   height: 91%;
   overflow-y: auto;
   box-sizing: border-box;
-  padding-top: 50px;
+  /* padding-top: 50px; */
 }
 
-.container-main > section {
+.container-main > section.container-tasksday {
   width: 600px;
-}
-
-.container-main > section::-webkit-scrollbar {
-  display: none;
-  width: 5px;
-}
-
-/* Track */
-.container-main > section::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
-}
-
-/* Handle */
-.container-main > section::-webkit-scrollbar-thumb {
-  background: rgb(209, 208, 208);
-  border-radius: 5px;
-}
-
-/* Handle on hover */
-.container-main > section::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  padding-top: 50px;
 }
 
 .task {
@@ -41,10 +22,9 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  margin: 0 auto;
   margin-top: 20px;
   padding: 0 20px;
-  width: 90%;
+  width: 100%;
   height: 60px;
 }
 
@@ -108,7 +88,7 @@
 
 .container-main > aside {
   width: 300px;
-  height: 80%;
+  padding-top: 50px;
 }
 
 .announcement {
@@ -167,17 +147,18 @@
 }
 
 .circular-chart .circle {
-  stroke: #2ed6a8;
+  stroke: rgb(46, 214, 169);
 }
 
 .btn-new-task {
-  background-color: #2ed6a8;
+  background-color: rgb(46, 214, 169);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   color: whitesmoke;
   font-family: 'Rubik', sans-serif;
-  padding: 5px 0;
+  font-weight: 600;
+  padding: 10px 0;
   margin-top: 10px;
   width: 60%;
 }
@@ -188,7 +169,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #1da581;
+  color: rgb(29, 165, 129);
   width: 500px;
 }
 
@@ -197,12 +178,13 @@
 }
 
 .noTasks > button {
-  background-color: #1da581;
+  background-color: rgb(29, 165, 129);
   border: none;
   border-radius: 5px;
   color: whitesmoke;
   cursor: pointer;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
   padding: 10px;
 }
 

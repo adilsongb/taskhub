@@ -10,12 +10,14 @@ function useDate() {
     let month = date.month;
     let year = date.year;
     if (day === 0) {
-      day = getDaysInMonth(date.month);
       month -= 1;
       if (month === 0) {
         month = 12;
         year -= 1;
       };
+
+      day = new Date(year, month, 0).getDate();
+      console.log(`ultimo dia ${day}`);
     };
 
     return { day, month, year };

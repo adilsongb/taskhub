@@ -105,7 +105,7 @@ function DailyTask() {
           className="btn-new-task"
           onClick={ viewContainer }
         >
-          Nova task
+          Nova tarefa
         </button>
       </section>
     )
@@ -131,6 +131,7 @@ function DailyTask() {
     return (
       <>
         <section className="container-tasksday">
+          <h2>Tarefas do dia</h2>
           {
             tasks.tasksDay.map((task, i) => (
               <div key={ i } className="task">
@@ -147,6 +148,7 @@ function DailyTask() {
               </div>
             ))
           }
+          {/* <h2>Hábitos</h2> */}
         </section>
         <aside>
           { renderControl() }

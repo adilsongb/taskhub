@@ -72,7 +72,7 @@ function NewTask({ closeForm }) {
   return (
     <div className="full-container">
       <form className="form-newtask">
-        <h2>Nova Task</h2>
+        <h2>Nova Tarefa</h2>
         <input
           type="text"
           placeholder="Título"
