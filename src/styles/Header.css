@@ -131,7 +131,7 @@ header.header-dashboard .user {
 
 @media only screen and (max-width: 1000px) {
   header.header-dashboard {
-    padding: 5px;
+    padding: 5px 15px;
   }
 
   .logo-container {

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import appContext from '../context/context';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { dataBase } from '../services/firebase';
+import { MdOutlineAdd } from "react-icons/md";
 import Loading from './Loading';
 import NewTask from './NewTask';
 import ilustrationTasks from '../images/tasks.png';
@@ -131,7 +132,12 @@ function DailyTask() {
     return (
       <>
         <section className="container-tasksday">
-          <h2>Tarefas do dia</h2>
+          <h2 className="header-day">
+            Tarefas do dia
+            <button onClick={ viewContainer }>
+              <MdOutlineAdd />
+            </button>
+          </h2> 
           {
             tasks.tasksDay.map((task, i) => (
               <div key={ i } className="task">

@@ -16,6 +16,15 @@ main {
   padding-top: 50px;
 }
 
+.header-day {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-day > button {
+  display: none;
+}
+
 .task {
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
@@ -205,7 +214,7 @@ main {
   }
 
   .noTasks > img {
-    width: 100%;
+    width: 250px;
   }
 
   .container-main > aside {
@@ -215,6 +224,21 @@ main {
   .container-main > section.container-tasksday {
     width: 100%;
     padding-top: 0;
+  }
+
+  section.container-tasksday > h2 {
+    margin: 0;
+  }
+
+  .header-day > button {
+    display: block;
+    background-color: #2ed6a8;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    padding: 0 8px;
+    padding-top: 5px;
   }
 
   .task {
