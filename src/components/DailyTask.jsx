@@ -129,12 +129,14 @@ function DailyTask() {
   }
 
   function renderTasks() {
+    const addTaskButton = (pastDate) ? 'none' : '';
+
     return (
       <>
         <section className="container-tasksday">
           <h2 className="header-day">
             Tarefas do dia
-            <button onClick={ viewContainer }>
+            <button onClick={ viewContainer } style={ { display: addTaskButton } }>
               <MdOutlineAdd />
             </button>
           </h2> 
