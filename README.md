@@ -15,9 +15,9 @@ Aplicação de lista de tarefas diárias capaz de salvar o progresso do usuário
 
 :heavy_check_mark: Sistema de login com o Google;
 
-:heavy_check_mark: Armazena as task na data que foram criadas;
+:heavy_check_mark: Armazena as tarefas na data que foram criadas;
 
-:heavy_check_mark: Informa o progesso do dia;
+:heavy_check_mark: Informa o progresso do dia;
 
 :heavy_check_mark: Design responsivo (mobile).
 
@@ -109,3 +109,9 @@ Veja a seguir uma checklist de features que ainda faltam desenvolver nesse proje
 
 - [ ] Cria página de estatísticas com as seguintes features:
   - [ ] Mostrar gráfico de quantas tasks foram criadas, e se há tasks concluídas ou pendentes
+
+---
+
+<p align="center">
+  <img src="http://4.bp.blogspot.com/-jfdsKqIK6zs/VQ_ypUVh69I/AAAAAAAAOpI/T4k3bSp8V4Q/s1600/16%2Bbit%2B21.gif" width="100">
+</p>
