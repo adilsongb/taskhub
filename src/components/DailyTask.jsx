@@ -59,30 +59,6 @@ function DailyTask() {
     const { dayStatus } = tasks;
     const percentComp = 100 / dayStatus.totalTasks;
 
-    if (pastDate) {
-      return (
-        <section className="status-controler">
-          <div className="status-progress status-progress-full">
-            <svg viewBox="0 0 36 36" className="circular-chart">
-              <path className="circle-bg"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path className="circle"
-                strokeDasharray={ `${percentComp * dayStatus.completedTasks}, 100` }
-                visibility={ dayStatus.completedTasks === 0 ? 'hidden' : '' }
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-            </svg>
-            <h2>{ `${dayStatus.completedTasks} / ${dayStatus.totalTasks}` }</h2>
-          </div>
-        </section>
-      );
-    }
-
     return (
       <section className="status-controler">
         <div className="status-progress">
@@ -102,12 +78,14 @@ function DailyTask() {
           </svg>
           <h2>{ `${dayStatus.completedTasks} / ${dayStatus.totalTasks}` }</h2>
         </div>
-        <button
-          className="btn-new-task"
-          onClick={ viewContainer }
-        >
-          Nova tarefa
-        </button>
+        {!pastDate && (
+          <button
+            className="btn-new-task"
+            onClick={ viewContainer }
+          >
+            Nova tarefa
+          </button>
+        )}
       </section>
     )
   }
