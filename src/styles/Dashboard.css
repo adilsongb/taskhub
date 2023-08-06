@@ -121,10 +121,10 @@ main {
 }
 
 .status-progress {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
 .status-progress-full {
