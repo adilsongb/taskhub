@@ -29,7 +29,7 @@ jobs:
 
       - name: Authenticate with Firebase
         run: |
-          echo "$FIREBASE_TOKEN" | firebase login --no-localhost --token
+          echo "$FIREBASE_TOKEN" | firebase login --no-localhost --token "$FIREBASE_TOKEN"
       
       - name: Install dependencies
         run: |
