@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Taskhub</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" backgroundColor="#23d694" />
     </View>
   );
 }
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    color: '#000'
+    fontWeight: 'bold',
+    color: '#23d694'
   }
 });

@@ -7,7 +7,7 @@
       "developmentClient": true,
       "distribution": "internal"
     },
-    "test": {
+    "dev": {
       "android": {
         "buildType": "apk"
       }
