@@ -38,4 +38,4 @@ jobs:
 
       - name: 🚀 Build app
         working-directory: ./app
-        run: npx eas build --non-interactive
+        run: eas build --non-interactive
