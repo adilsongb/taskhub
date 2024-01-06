@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: yarn
+          cache: npm
 
       - name: Setup EAS
         uses: expo/expo-github-action@v8
@@ -34,8 +34,8 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./app
-        run: yarn install
+        run: npm install
 
       - name: Publish update
         working-directory: ./app
-        run: eas update --auto
+        run: npx eas update --auto
