@@ -17,4 +17,5 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TASKHUB_ORGANIZATION }}'
+          channelId: deploy
           projectId: taskhub-organization
