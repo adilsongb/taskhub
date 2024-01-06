@@ -17,25 +17,25 @@ jobs:
             exit 1
           fi
 
-      - name: Checkout repository
+      - name: 🏗 Setup repo
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: 🏗 Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: npm
 
-      - name: Setup EAS
+      - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         working-directory: ./app
         run: npm install
 
-      - name: Publish update
+      - name: 🚀 Build app
         working-directory: ./app
-        run: npx eas update --auto
+        run: npx eas build --non-interactive
