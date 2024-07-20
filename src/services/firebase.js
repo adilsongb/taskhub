@@ -3,12 +3,13 @@ import { getFirestore } from 'firebase/firestore';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAe9W6S76vYnrKjR5sZ1KyPQFkEbRGCAuE",
-  authDomain: "taskhub-organization.firebaseapp.com",
-  projectId: "taskhub-organization",
-  storageBucket: "taskhub-organization.appspot.com",
-  messagingSenderId: "553972580673",
-  appId: "1:553972580673:web:7161561e187bc0db3721c0",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);
